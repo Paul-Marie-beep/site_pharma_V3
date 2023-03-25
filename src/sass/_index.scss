@@ -2,6 +2,7 @@
 $background-color: rgb(2, 15, 2);
 $color-primary: rgb(20, 163, 20);
 $color-secondary: white;
+$jumbo-height: 65vh;
 
 * {
   box-sizing: border-box;
@@ -30,7 +31,6 @@ a {
 
 h1 {
   font-family: "Roboto", sans-serif;
-  // color: $color-primary;
   color: $color-secondary;
   font-size: 5rem;
   font-weight: bolder;
@@ -46,7 +46,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // color: $color-primary;
   color: $color-secondary;
   &__left {
     display: flex;
@@ -63,13 +62,24 @@ header {
       margin-left: 1rem;
 
       & a {
-        // color: $color-primary;
         color: $color-secondary;
       }
     }
   }
   &__right {
     margin-right: 0.5rem;
+  }
+  animation: navbarFadeIn 1s ease-in-out;
+}
+
+@keyframes navbarFadeIn {
+  0% {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
   }
 }
 
@@ -90,6 +100,7 @@ header {
   width: 75%;
   margin: auto;
   margin-top: 1rem;
+  animation: titleFadeIn 1s 0.2s ease-in-out forwards;
   &__sous {
     color: $background-color;
     margin: auto;
@@ -100,6 +111,29 @@ header {
     -webkit-text-stroke: 1.3px $color-secondary;
     font-size: 1rem;
     font-family: "Roboto", sans-serif;
+    animation: subtitleFadeIn 1s 0.5s ease-in-out;
+  }
+}
+
+@keyframes titleFadeIn {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes subtitleFadeIn {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
   }
 }
 
@@ -107,9 +141,48 @@ header {
   display: flex;
   justify-content: space-between;
   margin: auto;
-  min-width: 100%;
-  height: 65vh;
+  width: 100%;
+  height: $jumbo-height;
   &__pic {
+    position: relative;
     width: 33%;
+    height: $jumbo-height;
+
+    &--img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-color: $background-color;
+      height: 100%;
+      width: 100%;
+    }
+    &--1::after {
+      animation: coverFadeOut 1s 1s ease-in-out;
+      transform-origin: top;
+    }
+    &--2::after {
+      animation: coverFadeOut 1s 1.1s ease-in-out;
+      transform-origin: top;
+    }
+    &--3::after {
+      animation: coverFadeOut 1s 1.2s ease-in-out;
+      transform-origin: top;
+    }
+  }
+}
+
+@keyframes coverFadeOut {
+  0% {
+    transform: (1);
+  }
+  100% {
+    transform: scaleY(0);
+    opacity: 0;
   }
 }

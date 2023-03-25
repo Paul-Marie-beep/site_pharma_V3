@@ -1,0 +1,115 @@
+// $background-color: #f7f7f7;
+$background-color: rgb(2, 15, 2);
+$color-primary: rgb(20, 163, 20);
+$color-secondary: white;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  min-height: 100%;
+  background-color: $background-color;
+}
+
+html {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  /* On met l'overflow x parce que sinon ont peu scorller et voir les autres photos */
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-family: "Roboto", sans-serif;
+  // color: $color-primary;
+  color: $color-secondary;
+  font-size: 5rem;
+  font-weight: bolder;
+  text-align: center;
+}
+
+header {
+  height: 35vh;
+}
+
+.navbar {
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  // color: $color-primary;
+  color: $color-secondary;
+  &__left {
+    display: flex;
+    justify-content: left;
+    padding: 0%;
+    align-items: center;
+    &--logo {
+      & img {
+        height: 2rem;
+        width: 2rem;
+      }
+    }
+    &--link {
+      margin-left: 1rem;
+
+      & a {
+        // color: $color-primary;
+        color: $color-secondary;
+      }
+    }
+  }
+  &__right {
+    margin-right: 0.5rem;
+  }
+}
+
+.navlink {
+  &:after {
+    display: block;
+    content: "";
+    border-bottom: 2px solid $color-secondary;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+  }
+  &:hover:after {
+    transform: scaleX(1);
+  }
+}
+
+.titre {
+  width: 75%;
+  margin: auto;
+  margin-top: 1rem;
+  &__sous {
+    color: $background-color;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 75%;
+    -webkit-text-stroke: 1.3px $color-secondary;
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+  }
+}
+
+.jumbo {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  min-width: 100%;
+  height: 65vh;
+  &__pic {
+    width: 33%;
+  }
+}

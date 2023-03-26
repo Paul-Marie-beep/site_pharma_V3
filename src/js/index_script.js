@@ -3,7 +3,6 @@
 const navBar = document.querySelector(".navbar");
 const title = document.querySelector(".titre");
 const subTitle = document.querySelector(".titre__sous");
-const containerOne = document.querySelector(".");
 
 // Function to handle the change of opacity when we hover on the links of the navbar
 const handlerover = function (event) {
@@ -24,7 +23,8 @@ const handlerover = function (event) {
 navBar.addEventListener("mouseover", handlerover.bind(0.5));
 navBar.addEventListener("mouseout", handlerover.bind(0.5));
 
-// We hide the title and one the fade in animation is finisshed, we set the opacity to 1
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// We hide the title and once the fade in animation is finished, we set the opacity to 1
 
 const fadeInHelper = function (div, time) {
   const delay = time * 1000;

@@ -65,22 +65,15 @@ header {
     justify-content: left;
     padding: 0%;
     align-items: center;
-    &--logo {
-      & img {
-        height: 2rem;
-        width: 2rem;
-      }
-    }
     &--link {
       margin-left: 1rem;
-
       & a {
         color: $color-secondary;
       }
     }
   }
   &__right {
-    margin-right: 0.5rem;
+    margin-right: 1rem;
   }
   animation: navbarFadeIn 1s ease-in-out;
 }

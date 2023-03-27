@@ -103,11 +103,11 @@ header {
 }
 
 .titre {
-  margin-bottom: 3rem;
+  height: calc(100vh - $navbar-height - $jumbo-height);
+  padding-top: 4rem;
   &__sur {
     width: 75%;
     margin: auto;
-    margin-top: 5rem;
     opacity: 0;
     animation: titleFadeIn 1s 0.3s ease-in-out forwards;
   }

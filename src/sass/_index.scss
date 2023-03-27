@@ -2,6 +2,7 @@ $background-color: rgb(2, 15, 2);
 $color-primary: rgb(20, 163, 20);
 $color-secondary: white;
 $jumbo-height: 65vh;
+$navbar-height: 5vh;
 
 * {
   box-sizing: border-box;
@@ -44,13 +45,21 @@ h2 {
   margin: auto;
 }
 
+header {
+  height: 100vh;
+}
+
+.icone-lazy {
+  filter: blur(20px);
+}
+
 .navbar {
   margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: $color-secondary;
-  height: 10vh;
+  height: $navbar-height;
   &__left {
     display: flex;
     justify-content: left;
@@ -78,7 +87,7 @@ h2 {
 
 @keyframes navbarFadeIn {
   0% {
-    transform: translateY(-10%);
+    transform: translateY(-50%);
     opacity: 0;
   }
   100% {
@@ -101,24 +110,29 @@ h2 {
 }
 
 .titre {
-  height: 20vh;
+  margin-bottom: 3rem;
   &__sur {
     width: 75%;
     margin: auto;
-    margin-top: 1rem;
-    animation: titleFadeIn 1s 0.2s ease-in-out forwards;
+    margin-top: 5rem;
+    opacity: 0;
+    animation: titleFadeIn 1s 0.3s ease-in-out forwards;
   }
   &__sous {
-    color: $background-color;
     margin: auto;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    opacity: 0;
     width: 75%;
-    -webkit-text-stroke: 1.3px $color-secondary;
-    font-size: 1rem;
-    font-family: "Roboto", sans-serif;
-    animation: subtitleFadeIn 1s 0.5s ease-in-out;
+
+    animation: subtitleFadeIn 1s 0.5s ease-in-out forwards;
+    & h2 {
+      color: $background-color;
+      font-size: 1.5rem;
+      font-family: "Roboto", sans-serif;
+      -webkit-text-stroke: 1.3px $color-secondary;
+    }
   }
 }
 
@@ -135,7 +149,7 @@ h2 {
 
 @keyframes subtitleFadeIn {
   0% {
-    transform: translateY(100%);
+    transform: translateY(250%);
     opacity: 0;
   }
   100% {
@@ -150,7 +164,6 @@ h2 {
   margin: auto;
   width: 100%;
   height: $jumbo-height;
-  // background-color: lime;
   &__pic {
     position: relative;
     width: 33%;
@@ -201,7 +214,7 @@ h2 {
   align-items: center;
   height: 30rem;
   margin: auto;
-  margin-top: 3rem;
+  margin-top: 5rem;
   width: 95%;
   height: 70vh;
   &__text {
@@ -275,8 +288,4 @@ h2 {
       bottom: 5.5rem;
     }
   }
-}
-
-.icone-lazy {
-  filter: blur(20px);
 }

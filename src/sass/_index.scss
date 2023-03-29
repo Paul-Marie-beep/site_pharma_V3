@@ -53,6 +53,11 @@ header {
   filter: blur(20px);
 }
 
+.section-hidden {
+  opacity: 0;
+  transform: translateY(10%);
+}
+
 .navbar {
   margin: auto;
   display: flex;
@@ -218,6 +223,7 @@ header {
   margin-top: 5rem;
   width: 95%;
   height: 70vh;
+  transition: 1s ease;
   &__text {
     width: 35%;
     & p {

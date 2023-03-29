@@ -1,9 +1,9 @@
 "use strict";
 
 const main = document.querySelector(".main");
-
 const navBar = document.querySelector(".navbar");
-const navHeight = navBar.getBoundingClientRect().height;
+const categories = document.querySelector(".categories");
+const items = document.querySelectorAll(".item");
 
 // Function to handle the change of opacity when we hover on the links of the navbar
 const handlerover = function (event) {
@@ -26,7 +26,8 @@ navBar.addEventListener("mouseout", handlerover.bind(0.5));
 // Sticky nav
 const obsCallback = function (entries) {
   const [entry] = entries;
-  console.log(entries, entry);
+  console.log("entries :", entries);
+  console.log("entry :", entry);
   if (entry.isIntersecting) navBar.classList.add("nav-sticky");
   else navBar.classList.remove("nav-sticky");
 };
@@ -40,3 +41,30 @@ const navObserver = new IntersectionObserver(obsCallback, obsOptions);
 navObserver.observe(main);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Reveal categories
+
+const revealSection = function (entries) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) return;
+
+  entry.target.classList.remove("section-hidden");
+  categoriesObserver.unobserve(categories);
+};
+
+const categoriesOptions = {
+  root: null,
+  threshold: 0.5,
+};
+
+const categoriesObserver = new IntersectionObserver(revealSection, categoriesOptions);
+categoriesObserver.observe(categories);
+categories.classList.add("section-hidden");
+
+const changeBackground = function (item) {
+  item.style = item.dataset.style;
+};
+
+items.forEach((item) => {
+  changeBackground(item);
+});

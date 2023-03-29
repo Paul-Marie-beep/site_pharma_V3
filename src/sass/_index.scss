@@ -60,6 +60,7 @@ header {
   align-items: center;
   color: $color-secondary;
   height: $navbar-height;
+  width: 100%;
   &__left {
     display: flex;
     justify-content: left;
@@ -100,6 +101,13 @@ header {
   &:hover:after {
     transform: scaleX(1);
   }
+}
+
+.nav-sticky {
+  position: fixed;
+  top: 0px;
+  z-index: 50;
+  background-color: $background-color;
 }
 
 .titre {

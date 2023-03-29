@@ -26,8 +26,6 @@ navBar.addEventListener("mouseout", handlerover.bind(0.5));
 // Sticky nav
 const obsCallback = function (entries) {
   const [entry] = entries;
-  console.log("entries :", entries);
-  console.log("entry :", entry);
   if (entry.isIntersecting) navBar.classList.add("nav-sticky");
   else navBar.classList.remove("nav-sticky");
 };
@@ -43,13 +41,36 @@ navObserver.observe(main);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Reveal categories
 
-const revealSection = function (entries) {
+const changeBackground = function (entries, observer) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) return;
+
+  console.log("trig");
+
+  items.forEach((item) => {
+    item.style = item.dataset.style;
+  });
+
+  observer.unobserve(entry.target);
+};
+
+const backgroundOptions = {
+  root: null,
+  threshold: 0,
+  ///////////////
+  // À affiner
+  rootMargin: "+50px",
+  ///////////////
+};
+
+const revealSection = function (entries, observer) {
   const [entry] = entries;
 
   if (!entry.isIntersecting) return;
 
   entry.target.classList.remove("section-hidden");
-  categoriesObserver.unobserve(categories);
+  observer.unobserve(entry.target);
 };
 
 const categoriesOptions = {
@@ -57,14 +78,9 @@ const categoriesOptions = {
   threshold: 0.5,
 };
 
+const backgroundObserver = new IntersectionObserver(changeBackground, backgroundOptions);
+backgroundObserver.observe(categories);
+
 const categoriesObserver = new IntersectionObserver(revealSection, categoriesOptions);
 categoriesObserver.observe(categories);
 categories.classList.add("section-hidden");
-
-const changeBackground = function (item) {
-  item.style = item.dataset.style;
-};
-
-items.forEach((item) => {
-  changeBackground(item);
-});

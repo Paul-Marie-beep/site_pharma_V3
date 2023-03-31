@@ -3,10 +3,33 @@ $color-primary: rgb(20, 163, 20);
 $color-secondary: white;
 $jumbo-height: 65vh;
 $navbar-height: 5vh;
+$ball-height: 1.5rem;
+$ball-width: 3%;
+$stepper-green: $color-primary;
+$stepper-grey: rgb(204, 201, 201);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+@mixin ball($color) {
+  border-radius: 50%;
+  background-color: $color;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+@mixin transition-transform {
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+@mixin transition-after {
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
 
 * {
   box-sizing: border-box;
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 body {
   margin: 0px;
@@ -49,6 +72,21 @@ header {
   height: 100vh;
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+.unscale::after {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.ball-up {
+  transform: translateY(-100%);
+}
+
+.atrophy {
+  transform: scaleX(0);
+}
+
 .icone-lazy {
   filter: blur(20px);
 }
@@ -57,6 +95,22 @@ header {
   opacity: 0;
   transform: translateY(10%);
 }
+
+.hidden {
+  opacity: 0;
+}
+
+.translate--100 {
+  transform: translateX(-100%);
+}
+.translate--200 {
+  transform: translateX(-200%);
+}
+.translate--300 {
+  transform: translateX(-300%);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 .navbar {
   margin: auto;
@@ -214,6 +268,9 @@ header {
   }
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Categories
+
 .categories {
   display: flex;
   justify-content: space-between;
@@ -297,6 +354,9 @@ header {
   }
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Sticky Picture
+
 .sticky-pic {
   margin-top: 5rem;
   min-width: 100%;
@@ -305,5 +365,287 @@ header {
     min-width: 100%;
     background: url("../../src/images/sticky/ext_pharma.jpeg") no-repeat fixed;
     background-size: cover;
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Produits du moment
+
+.moment-products {
+  padding-top: 4rem;
+  transition: 1s;
+  &__container {
+    width: 70%;
+    margin: auto;
+    margin-top: 5rem;
+    position: relative;
+  }
+}
+
+.top-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: auto;
+  &--texts {
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 30%;
+    @media screen and (max-width: 800px) {
+      max-width: 50%;
+      word-wrap: break-word;
+    }
+  }
+  &__pics {
+    display: flex;
+    align-items: center;
+    width: 25%;
+    @media screen and (max-width: 1000px) {
+      width: 28%;
+    }
+    @media screen and (max-width: 800px) {
+      width: 30%;
+    }
+    @media screen and (max-width: 650px) {
+      width: 33%;
+    }
+  }
+}
+
+.titles {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: auto;
+  &__title {
+    height: fit-content;
+    width: 26rem;
+    margin: auto;
+    @include transition-transform;
+    @media screen and (max-width: 900px) {
+      width: 23rem;
+    }
+    @media screen and (max-width: 800px) {
+      width: 20rem;
+    }
+    @media screen and (max-width: 700px) {
+      width: 18rem;
+    }
+  }
+}
+
+.title {
+  &-green {
+    color: $color-primary;
+    font-size: 1.5rem;
+    @media screen and (max-width: 800px) {
+      font-size: 1.25rem;
+    }
+  }
+  &-grey {
+    color: #888;
+    margin: auto;
+  }
+}
+
+.descriptions {
+  display: flex;
+  align-items: flex-start;
+  &__description {
+    text-align: left;
+    width: 22rem;
+    margin: auto;
+    margin-top: 2rem;
+    font-style: italic;
+    color: $color-secondary;
+    @include transition-transform;
+    @media screen and (max-width: 1000px) {
+      margin-top: 0.5rem;
+    }
+    @media screen and (max-width: 700px) {
+      margin-top: 0.5rem;
+      width: 17rem;
+    }
+    @media screen and (max-width: 700px) {
+      margin-top: 0.2rem;
+      width: 15rem;
+    }
+  }
+}
+
+.product {
+  &__pic {
+    min-width: 100%;
+    min-height: 100%;
+    @include transition-transform;
+  }
+}
+
+.bottom-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5rem;
+  overflow: hidden;
+}
+
+.arrows {
+  display: flex;
+  justify-content: space-between;
+  width: 12%;
+  &__arrow {
+    height: 2.5rem;
+    width: min-content;
+    max-width: 3rem;
+    cursor: pointer;
+    &--left {
+      transform: rotate(90deg);
+      opacity: 0.5;
+    }
+    &--right {
+      transform: rotate(-90deg);
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    min-width: 14%;
+  }
+  @media screen and (max-width: 1000px) {
+    min-width: 16%;
+  }
+  @media screen and (max-width: 850px) {
+    min-width: 18%;
+  }
+  @media screen and (max-width: 750px) {
+    min-width: 20%;
+  }
+  @media screen and (max-width: 650px) {
+    min-width: 25%;
+  }
+}
+
+.stepper {
+  width: 75%;
+  height: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: -2.2rem;
+  &__ball {
+    position: relative;
+    height: 1.5rem;
+    width: 33%;
+    &--grey {
+      @include ball($stepper-grey);
+    }
+    &--green {
+      @include ball($stepper-green);
+      transition: transform 0.2s ease-in-out;
+      transform-origin: left;
+    }
+    &::before {
+      position: absolute;
+      content: "";
+      height: 0.2rem;
+      background-color: $stepper-grey;
+      top: 45%;
+      width: 100%;
+      z-index: -1;
+    }
+    &::after {
+      position: absolute;
+      content: "";
+      height: 0.2rem;
+      background-color: $stepper-green;
+      top: 45%;
+      width: 100%;
+      right: 0%;
+      transform-origin: left;
+      @include transition-after;
+      z-index: 2;
+    }
+    &:last-child {
+      width: 4.1rem;
+      @media screen and (max-width: 1000px) {
+        width: 4.3rem;
+      }
+      @media screen and (max-width: 800px) {
+        width: 4.4rem;
+      }
+      @media screen and (max-width: 725px) {
+        width: 4.5rem;
+      }
+      @media screen and (max-width: 650px) {
+        width: 4.6rem;
+      }
+      @media screen and (max-width: 650px) {
+        width: 4.7rem;
+      }
+      @media screen and (max-width: 570px) {
+        width: 4.8rem;
+      }
+    }
+    &:last-child::before {
+      content: none;
+    }
+    &:last-child::after {
+      content: none;
+    }
+  }
+  &__ball img {
+    width: 1.5rem;
+  }
+}
+
+.sm-screen-replacement {
+  display: none;
+}
+
+@media screen and (max-width: 650px) {
+  .moment-products {
+    min-height: auto;
+    margin: auto;
+  }
+
+  .moment-products__container {
+    display: none;
+  }
+
+  .sm-screen-replacement {
+    width: 90;
+    margin: auto;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(-10%);
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+  }
+
+  .rpm-pic {
+    width: 50%;
+    margin-top: 2rem;
+  }
+
+  .testimonial_header-rpm {
+    text-align: center;
+    margin: auto;
+    margin-top: 2rem;
+  }
+
+  .product-grey-addition {
+    color: #888;
+    text-align: center;
+  }
+
+  .testimonial__text {
+    width: 70%;
+    color: #666;
+    margin: auto;
+    text-align: center;
+    margin-top: 1rem;
   }
 }

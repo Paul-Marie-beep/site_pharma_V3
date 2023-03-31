@@ -275,10 +275,7 @@ const rightAction = function () {
 
 // function to handle the user's order via the keyboard
 const stepperKey = function () {
-  console.log("go");
   document.addEventListener("keydown", function (event) {
-    console.log("clavier :", event.key);
-    console.log("allowKey :", allowKey);
     if (event.key === "ArrowLeft" && allowKey) {
       leftAction();
     }
@@ -295,3 +292,25 @@ const stepperClick = function () {
   arrowLeft.addEventListener("click", leftAction);
 };
 stepperClick();
+
+// The arrows will change aspect
+
+const shrinkArrowLeft = function () {
+  // On met une guard si on est sur la première slide
+  if (i === 1) return;
+  // On met une guard pour être sûr que l'on ne change pas de slide avant la fin de l'intervalle
+  if (!carryOn) return;
+  this.classList.toggle("shrink-left");
+};
+const shrinkArrowRight = function () {
+  // On met une guard si on est sur la première slide
+  if (i === 4) return;
+  // On met une guard pour être sûr que l'on ne change pas de slide avant la fin de l'intervalle
+  if (!carryOn) return;
+  this.classList.toggle("shrink-right");
+};
+
+arrowLeft.addEventListener("mousedown", shrinkArrowLeft);
+arrowLeft.addEventListener("mouseup", shrinkArrowLeft);
+arrowRight.addEventListener("mousedown", shrinkArrowRight);
+arrowRight.addEventListener("mouseup", shrinkArrowRight);

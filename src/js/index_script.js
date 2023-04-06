@@ -7,11 +7,17 @@ const items = document.querySelectorAll(".item");
 const momentProducts = document.querySelector(".moment-products");
 const [...momentProductsImages] = document.querySelectorAll(".product__pic");
 
+const navContact = document.querySelector('.navbar__right--contact');
+const contact = document.getElementById('contact');
+
 const arrowLeft = document.querySelector(".arrows__arrow--left");
 const arrowRight = document.querySelector(".arrows__arrow--right");
 let i = 1;
 let carryOn = true;
 let allowKey;
+
+const allAfter = document.querySelectorAll('.mark');
+const rightBlock = document.querySelector('.right-bloc');
 
 // Function to handle the change of opacity when we hover on the links of the navbar
 const handlerover = function (event) {
@@ -142,6 +148,35 @@ const allowKeyboardUse = function (entries, observer) {
 
 const allowKeyObserver = new IntersectionObserver(allowKeyboardUse, productImagesOptions);
 allowKeyObserver.observe(momentProducts);
+
+const contactOptions = {
+  root: null,
+  threshold: 0.3,
+};
+
+const contactObserver = new IntersectionObserver(revealSection,contactOptions);
+contactObserver.observe(contact);
+contact.classList.add("section-hidden");
+
+const revealAdress = function(entries, observer) {
+  const [entry] = entries;
+
+  if(!entry.isIntersecting) return;
+  
+  allAfter.forEach((div)=>{
+    div.classList.add("erase-after");
+    observer.unobserve(rightBlock);
+  })
+};
+
+const adressOptions = {
+  root: null,
+  threshold: 0.7,
+};
+
+const adressObserver = new IntersectionObserver(revealAdress, adressOptions);
+adressObserver.observe(rightBlock);
+allAfter.forEach((div)=>{div.classList.add("after")});
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Pour le slider des produits du moment
@@ -302,8 +337,9 @@ const shrinkArrowLeft = function () {
   if (!carryOn) return;
   this.classList.toggle("shrink-left");
 };
+
 const shrinkArrowRight = function () {
-  // On met une guard si on est sur la première slide
+  // On met une guard si on est sur la dernière slide
   if (i === 4) return;
   // On met une guard pour être sûr que l'on ne change pas de slide avant la fin de l'intervalle
   if (!carryOn) return;
@@ -314,3 +350,10 @@ arrowLeft.addEventListener("mousedown", shrinkArrowLeft);
 arrowLeft.addEventListener("mouseup", shrinkArrowLeft);
 arrowRight.addEventListener("mousedown", shrinkArrowRight);
 arrowRight.addEventListener("mouseup", shrinkArrowRight);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Scroll to contact
+
+navContact.addEventListener("click", ()=>{
+  contact.scrollIntoView({behavior: "smooth"});
+});

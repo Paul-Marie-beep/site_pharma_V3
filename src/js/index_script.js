@@ -23,6 +23,9 @@ const allHorairesBtn = document.querySelectorAll(".horaires-btn");
 const btnContainer = document.querySelector(".horaires-btn-container");
 const horairesContent = document.querySelectorAll(".horaires-content");
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Navbar
+
 // Function to handle the change of opacity when we hover on the links of the navbar
 const handlerover = function (event) {
   if (event.target.classList.contains("navlink")) {
@@ -40,17 +43,22 @@ const handlerover = function (event) {
 navBar.addEventListener("mouseover", handlerover.bind(0.5));
 navBar.addEventListener("mouseout", handlerover.bind(0.5));
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Sticky nav
 const obsCallback = function (entries) {
   const [entry] = entries;
-  if (entry.isIntersecting) navBar.classList.add("nav-sticky");
-  else navBar.classList.remove("nav-sticky");
+  console.log("observer triggered");
+  if (entry.isIntersecting) {
+    navBar.classList.add("nav-sticky");
+    console.log("inside if");
+  } else {
+    navBar.classList.remove("nav-sticky");
+    console.log("inside else");
+  }
 };
 
 const obsOptions = {
   root: null,
-  threshold: 0.55,
+  threshold: 0.22,
 };
 
 const navObserver = new IntersectionObserver(obsCallback, obsOptions);

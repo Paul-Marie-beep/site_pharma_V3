@@ -7,8 +7,8 @@ const items = document.querySelectorAll(".item");
 const momentProducts = document.querySelector(".moment-products");
 const [...momentProductsImages] = document.querySelectorAll(".product__pic");
 
-const navContact = document.querySelector('.navbar__right--contact');
-const contact = document.getElementById('contact');
+const navContact = document.querySelector(".navbar__right--contact");
+const contact = document.getElementById("contact");
 
 const arrowLeft = document.querySelector(".arrows__arrow--left");
 const arrowRight = document.querySelector(".arrows__arrow--right");
@@ -16,8 +16,12 @@ let i = 1;
 let carryOn = true;
 let allowKey;
 
-const allAfter = document.querySelectorAll('.mark');
-const rightBlock = document.querySelector('.right-bloc');
+const allAfter = document.querySelectorAll(".mark");
+const rightBlock = document.querySelector(".right-bloc");
+
+const allHorairesBtn = document.querySelectorAll(".horaires-btn");
+const btnContainer = document.querySelector(".horaires-btn-container");
+const horairesContent = document.querySelectorAll(".horaires-content");
 
 // Function to handle the change of opacity when we hover on the links of the navbar
 const handlerover = function (event) {
@@ -51,6 +55,11 @@ const obsOptions = {
 
 const navObserver = new IntersectionObserver(obsCallback, obsOptions);
 navObserver.observe(main);
+
+// Scroll to contact
+navContact.addEventListener("click", () => {
+  contact.scrollIntoView({ behavior: "smooth" });
+});
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Reveal categories
@@ -154,19 +163,19 @@ const contactOptions = {
   threshold: 0.3,
 };
 
-const contactObserver = new IntersectionObserver(revealSection,contactOptions);
+const contactObserver = new IntersectionObserver(revealSection, contactOptions);
 contactObserver.observe(contact);
 contact.classList.add("section-hidden");
 
-const revealAdress = function(entries, observer) {
+const revealAdress = function (entries, observer) {
   const [entry] = entries;
 
-  if(!entry.isIntersecting) return;
-  
-  allAfter.forEach((div)=>{
+  if (!entry.isIntersecting) return;
+
+  allAfter.forEach((div) => {
     div.classList.add("erase-after");
     observer.unobserve(rightBlock);
-  })
+  });
 };
 
 const adressOptions = {
@@ -176,7 +185,9 @@ const adressOptions = {
 
 const adressObserver = new IntersectionObserver(revealAdress, adressOptions);
 adressObserver.observe(rightBlock);
-allAfter.forEach((div)=>{div.classList.add("after")});
+allAfter.forEach((div) => {
+  div.classList.add("after");
+});
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Pour le slider des produits du moment
@@ -351,9 +362,39 @@ arrowLeft.addEventListener("mouseup", shrinkArrowLeft);
 arrowRight.addEventListener("mousedown", shrinkArrowRight);
 arrowRight.addEventListener("mouseup", shrinkArrowRight);
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Scroll to contact
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-navContact.addEventListener("click", ()=>{
-  contact.scrollIntoView({behavior: "smooth"});
+// Tabbed compenent horaires
+btnContainer.addEventListener("click", function (e) {
+  const clicked = e.target;
+  if (!clicked.classList.contains("horaires-btn")) return;
+
+  allHorairesBtn.forEach((a) => {
+    a.classList.remove("horaires-btn-active");
+  });
+  clicked.classList.add("horaires-btn-active");
+
+  horairesContent.forEach((h) => {
+    h.classList.add("horaires-content-hidden");
+  });
+
+  document.querySelector(`.horaires-content--${clicked.dataset.tab}`).classList.remove("horaires-content-hidden");
+});
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Tabbed compenent horaires
+btnContainer.addEventListener("click", function (e) {
+  const clicked = e.target;
+  if (!clicked.classList.contains("horaires-btn")) return;
+
+  allHorairesBtn.forEach((a) => {
+    a.classList.remove("horaires-btn-active");
+  });
+  clicked.classList.add("horaires-btn-active");
+
+  horairesContent.forEach((h) => {
+    h.classList.add("horaires-content-hidden");
+  });
+
+  document.querySelector(`.horaires-content--${clicked.dataset.tab}`).classList.remove("horaires-content-hidden");
 });

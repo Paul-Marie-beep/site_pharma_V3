@@ -946,3 +946,25 @@ header {
     font-size: 1rem;
   }
 }
+
+/* Footer */
+
+footer {
+  height: 3rem;
+  background-color: $background-color;
+  margin-top: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copy-right {
+  margin-left: 1rem;
+  color: $text-primary;
+}
+
+.legal-link {
+  margin-right: 1rem;
+  text-decoration: none;
+  color: $text-primary;
+}

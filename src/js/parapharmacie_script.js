@@ -58,17 +58,17 @@ const revealSection = function (entries, observer) {
   observer.unobserve(entry.target);
 };
 
-const revealPdtsNat = function (entries, observer) {
+const revealPara = function (entries, observer) {
   revealSection(entries, observer);
 };
 
-const pdtsNatOptions = {
+const paraOptions = {
   root: null,
-  threshold: 0.3,
+  threshold: 0.25,
 };
 
-const pdtsNatObserver = new IntersectionObserver(revealPdtsNat, pdtsNatOptions);
-pdtsNatObserver.observe(cardsNat);
+const paraObserver = new IntersectionObserver(revealPara, paraOptions);
+paraObserver.observe(cardsNat);
 
 const loadImage = function (img) {
   img.src = img.dataset.src;
@@ -87,7 +87,7 @@ const revealImages = function (entries, observer) {
 const cardPicsOptions = {
   root: null,
   threshold: 0,
-  rootMargin: "+50px",
+  rootMargin: "+30px",
 };
 
 const cardPicsObserver = new IntersectionObserver(revealImages, cardPicsOptions);

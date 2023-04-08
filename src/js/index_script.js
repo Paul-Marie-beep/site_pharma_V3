@@ -73,7 +73,7 @@ const navSlide = function () {
     nav.classList.add("nav-visible");
     // Reveal the links
     links.forEach((link, index) => {
-      link.style.opacity === "0" ? (link.style.opacity = "1") : (link.style.opacity = "0");
+      link.style.opacity = 0;
       if (link.style.animation) {
         link.style.animation = "";
       } else {

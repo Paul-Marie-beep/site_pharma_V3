@@ -76,7 +76,9 @@ header {
       color: $color-secondary;
     }
   }
-  animation: navbarFadeIn 1s ease-in-out;
+  @media screen and (min-width: 751px) {
+    animation: navbarFadeIn 1s ease-in-out;
+  }
 }
 
 @keyframes navbarFadeIn {

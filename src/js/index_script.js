@@ -7,6 +7,7 @@ const items = document.querySelectorAll(".item");
 const momentProducts = document.querySelector(".moment-products");
 const [...momentProductsImages] = document.querySelectorAll(".product__pic");
 
+const nav = document.querySelector(".navlinks");
 const navContact = document.querySelector(".navlinks__right--contact");
 const contact = document.getElementById("contact");
 
@@ -64,7 +65,6 @@ navObserver.observe(main);
 // Apparition navbar responsive
 const navSlide = function () {
   const burger = document.querySelector(".burger");
-  const nav = document.querySelector(".navlinks");
   const links = document.querySelectorAll(".navlink");
 
   const burgerPress = function () {
@@ -86,11 +86,21 @@ const navSlide = function () {
   burger.addEventListener("click", burgerPress);
 };
 
+// Supprimer une classe pour ne pas avoir d'animation quand on a déjà cliqué sur le burger et qu'on change la dimension de la page.
+const removeVisibility = function () {
+  const viewPortWidth = window.innerWidth;
+  if (viewPortWidth > 750) {
+    nav.classList.remove("nav-visible");
+  }
+};
+window.addEventListener("resize", removeVisibility);
+
 // Scroll to contact
 navContact.addEventListener("click", () => {
   contact.scrollIntoView({ behavior: "smooth" });
 });
 navSlide();
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Reveal categories
 

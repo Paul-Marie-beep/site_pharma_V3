@@ -163,7 +163,7 @@ header {
   }
 
   .navlinks {
-    opacity: 0 !important;
+    opacity: 0;
     color: $color-secondary;
     position: absolute;
     right: 0;
@@ -206,7 +206,7 @@ header {
 }
 
 .nav-visible {
-  opacity: 1 !important;
+  opacity: 1;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -7,7 +7,7 @@ const items = document.querySelectorAll(".item");
 const momentProducts = document.querySelector(".moment-products");
 const [...momentProductsImages] = document.querySelectorAll(".product__pic");
 
-const navContact = document.querySelector(".navbar__right--contact");
+const navContact = document.querySelector(".navlinks__right--contact");
 const contact = document.getElementById("contact");
 
 const arrowLeft = document.querySelector(".arrows__arrow--left");
@@ -46,13 +46,10 @@ navBar.addEventListener("mouseout", handlerover.bind(0.5));
 // Sticky nav
 const obsCallback = function (entries) {
   const [entry] = entries;
-  console.log("observer triggered");
   if (entry.isIntersecting) {
     navBar.classList.add("nav-sticky");
-    console.log("inside if");
   } else {
     navBar.classList.remove("nav-sticky");
-    console.log("inside else");
   }
 };
 

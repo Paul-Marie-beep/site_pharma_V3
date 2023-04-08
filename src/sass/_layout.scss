@@ -128,17 +128,42 @@ header {
   }
 }
 
+@keyframes navLinkFade {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+.toggle .burger__line--1 {
+  transform: rotate(-45deg) translate(-4px, 6px);
+}
+.toggle .burger__line--2 {
+  opacity: 0;
+}
+.toggle .burger__line--3 {
+  transform: rotate(45deg) translate(-4px, -6px);
+}
+.toggle {
+  border: none;
+}
+
 @media screen and (max-width: 750px) {
   .navbar {
     display: flex;
     justify-content: right;
     position: fixed;
     top: 0;
-    z-index: 4;
     background-color: $background-color;
+    z-index: 2;
   }
 
   .navlinks {
+    opacity: 0 !important;
     color: $color-secondary;
     position: absolute;
     right: 0;
@@ -152,7 +177,7 @@ header {
     width: 45%;
     transform: translateX(100%);
     transition: transform 0.8s ease-in;
-    opacity: 0;
+    z-index: 2;
     &__left {
       display: flex;
       flex-direction: column;
@@ -174,6 +199,14 @@ header {
   .burger {
     display: block;
   }
+}
+
+.nav-active {
+  transform: translateX(0%) !important;
+}
+
+.nav-visible {
+  opacity: 1 !important;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////

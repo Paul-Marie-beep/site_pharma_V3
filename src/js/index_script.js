@@ -61,11 +61,36 @@ const obsOptions = {
 const navObserver = new IntersectionObserver(obsCallback, obsOptions);
 navObserver.observe(main);
 
+// Apparition navbar responsive
+const navSlide = function () {
+  const burger = document.querySelector(".burger");
+  const nav = document.querySelector(".navlinks");
+  const links = document.querySelectorAll(".navlink");
+
+  const burgerPress = function () {
+    //toggle nav
+    nav.classList.toggle("nav-active");
+    nav.classList.add("nav-visible");
+    // Reveal the links
+    links.forEach((link, index) => {
+      link.style.opacity === "0" ? (link.style.opacity = "1") : (link.style.opacity = "0");
+      if (link.style.animation) {
+        link.style.animation = "";
+      } else {
+        link.style.animation = `navLinkFade 0.3s ease forwards ${index / 7 + 1}s`;
+      }
+    });
+    // Burger animation
+    burger.classList.toggle("toggle");
+  };
+  burger.addEventListener("click", burgerPress);
+};
+
 // Scroll to contact
 navContact.addEventListener("click", () => {
   contact.scrollIntoView({ behavior: "smooth" });
 });
-
+navSlide();
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Reveal categories
 

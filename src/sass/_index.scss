@@ -6,10 +6,10 @@
 
 .titre {
   height: calc(100vh - $navbar-height - $jumbo-height);
-  padding-top: 4rem;
   &__sur {
     width: 75%;
     margin: auto;
+    padding-top: 4rem;
     opacity: 0;
     animation: titleFadeIn 1s 0.3s ease-in-out forwards;
     @media screen and (max-width: 1130px) {
@@ -20,10 +20,12 @@
     }
     @media screen and (max-width: 905px) {
       font-size: 3.5rem;
-      padding-top: 0;
     }
     @media screen and (max-width: 800px) {
       font-size: 3rem;
+    }
+    @media screen and (max-width: 800px) {
+      padding-top: 6rem;
     }
     @media screen and (max-width: 680px) {
       font-size: 2.75rem;
@@ -95,12 +97,6 @@
   margin: auto;
   width: 100%;
   height: $jumbo-height;
-  @media screen and (max-width: 1130px) {
-    height: calc($jumbo-height - 5vh);
-  }
-  @media screen and (max-width: 905px) {
-    height: calc($jumbo-height - 7.5vh);
-  }
   &__pic {
     position: relative;
     width: 33%;
@@ -127,7 +123,7 @@
       }
     }
     &--1 img {
-      @media screen and (max-width: 820px) {
+      @media screen and (max-width: 850px) {
         position: absolute;
         top: 0;
         right: 0;

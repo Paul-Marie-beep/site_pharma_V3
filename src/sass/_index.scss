@@ -255,6 +255,85 @@
   }
 }
 
+@media screen and (max-width: 1000px) {
+  .item__horiz h3 {
+    font-size: 1.5em;
+  }
+
+  .categories__text h2 {
+    font-size: 2rem;
+  }
+
+  .categories__text p {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .categories {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: fit-content;
+    margin-bottom: 0px;
+    &__text {
+      width: 100%;
+    }
+    &__text h2 {
+      width: 80%;
+      margin: auto;
+      font-size: 2.5rem;
+    }
+    &__text p {
+      width: 95%;
+    }
+    &__pictures {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+  }
+
+  .item {
+    width: 70%;
+    height: 50vh;
+    margin-top: 2rem;
+    &__vert {
+      display: none;
+    }
+    &__horiz {
+      opacity: 1;
+    }
+    &__horiz h3 {
+      font-size: 1.5rem;
+    }
+    &:hover {
+      width: 70%;
+    }
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .item {
+    width: 80%;
+    height: 20rem;
+    &:hover {
+      width: 80%;
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .item {
+    height: 17rem;
+    &__horiz h3 {
+      font-size: 1.5rem;
+    }
+  }
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// Sticky Picture
 

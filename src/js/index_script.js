@@ -24,6 +24,8 @@ const allHorairesBtn = document.querySelectorAll(".horaires-btn");
 const btnContainer = document.querySelector(".horaires-btn-container");
 const horairesContent = document.querySelectorAll(".horaires-content");
 
+const viewportWidthCondition = window.innerWidth < 750;
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Navbar
 
@@ -41,8 +43,10 @@ const handlerover = function (event) {
   }
 };
 
-navBar.addEventListener("mouseover", handlerover.bind(0.5));
-navBar.addEventListener("mouseout", handlerover.bind(0.5));
+const startNavHover = function () {
+  navBar.addEventListener("mouseover", handlerover.bind(0.5));
+  navBar.addEventListener("mouseout", handlerover.bind(0.5));
+};
 
 // Sticky nav
 const obsCallback = function (entries) {
@@ -60,7 +64,6 @@ const obsOptions = {
 };
 
 const navObserver = new IntersectionObserver(obsCallback, obsOptions);
-navObserver.observe(main);
 
 // Apparition navbar responsive
 const navSlide = function () {
@@ -126,7 +129,6 @@ const backgroundOptions = {
 };
 
 const backgroundObserver = new IntersectionObserver(changeBackground, backgroundOptions);
-backgroundObserver.observe(categories);
 
 const revealSection = function (entries, observer) {
   const [entry] = entries;
@@ -143,8 +145,6 @@ const categoriesOptions = {
 };
 
 const categoriesObserver = new IntersectionObserver(revealSection, categoriesOptions);
-categoriesObserver.observe(categories);
-categories.classList.add("section-hidden");
 
 const loadImage = function (img) {
   img.src = img.dataset.src;
@@ -182,8 +182,6 @@ const revealProductsOptions = {
 };
 
 const productsObserver = new IntersectionObserver(revealSection, revealProductsOptions);
-productsObserver.observe(momentProducts);
-momentProducts.classList.add("section-hidden");
 
 const allowKeyboardUse = function (entries, observer) {
   const [entry] = entries;
@@ -224,10 +222,6 @@ const adressOptions = {
 };
 
 const adressObserver = new IntersectionObserver(revealAdress, adressOptions);
-adressObserver.observe(rightBlock);
-allAfter.forEach((div) => {
-  div.classList.add("after");
-});
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Pour le slider des produits du moment
@@ -370,14 +364,12 @@ const stepperKey = function () {
     }
   });
 };
-stepperKey();
 
 // function to handle the user's order via the mouse
 const stepperClick = function () {
   arrowRight.addEventListener("click", rightAction);
   arrowLeft.addEventListener("click", leftAction);
 };
-stepperClick();
 
 // The arrows will change aspect
 
@@ -397,10 +389,12 @@ const shrinkArrowRight = function () {
   this.classList.toggle("shrink-right");
 };
 
-arrowLeft.addEventListener("mousedown", shrinkArrowLeft);
-arrowLeft.addEventListener("mouseup", shrinkArrowLeft);
-arrowRight.addEventListener("mousedown", shrinkArrowRight);
-arrowRight.addEventListener("mouseup", shrinkArrowRight);
+const startArrowResizing = function () {
+  arrowLeft.addEventListener("mousedown", shrinkArrowLeft);
+  arrowLeft.addEventListener("mouseup", shrinkArrowLeft);
+  arrowRight.addEventListener("mousedown", shrinkArrowRight);
+  arrowRight.addEventListener("mouseup", shrinkArrowRight);
+};
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -422,19 +416,24 @@ btnContainer.addEventListener("click", function (e) {
 });
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Tabbed compenent horaires
-btnContainer.addEventListener("click", function (e) {
-  const clicked = e.target;
-  if (!clicked.classList.contains("horaires-btn")) return;
 
-  allHorairesBtn.forEach((a) => {
-    a.classList.remove("horaires-btn-active");
+const notIfMobile = function () {
+  // Guard to prevent the various JS functions from kicking off if the screen is too small
+  if (viewportWidthCondition) return;
+  startNavHover();
+  navObserver.observe(main);
+  backgroundObserver.observe(categories);
+  categoriesObserver.observe(categories);
+  categories.classList.add("section-hidden");
+  productsObserver.observe(momentProducts);
+  momentProducts.classList.add("section-hidden");
+  adressObserver.observe(rightBlock);
+  allAfter.forEach((div) => {
+    div.classList.add("after");
   });
-  clicked.classList.add("horaires-btn-active");
+  startArrowResizing();
+  stepperClick();
+  stepperKey();
+};
 
-  horairesContent.forEach((h) => {
-    h.classList.add("horaires-content-hidden");
-  });
-
-  document.querySelector(`.horaires-content--${clicked.dataset.tab}`).classList.remove("horaires-content-hidden");
-});
+notIfMobile();

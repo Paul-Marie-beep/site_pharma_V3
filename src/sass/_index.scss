@@ -387,7 +387,7 @@
 /// Produits du moment
 
 .moment-products {
-  padding-top: 4rem;
+  margin-top: 5rem;
   transition: 1s;
   &__container {
     width: 70%;
@@ -622,6 +622,7 @@
   .moment-products {
     min-height: auto;
     margin: auto;
+    margin-top: 5rem;
   }
 
   .moment-products__container {

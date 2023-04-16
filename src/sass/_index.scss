@@ -76,8 +76,10 @@
         font-size: 1.25rem;
         margin-top: 1rem;
       }
-      @media screen and (max-width: 650px) {
+      @media screen and (max-width: 450px) {
         font-size: 1rem;
+        -webkit-text-stroke: 0px;
+        color: $color-secondary;
       }
     }
   }

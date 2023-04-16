@@ -230,6 +230,7 @@
     justify-content: space-between;
     height: 100%;
     width: 65%;
+    margin: auto;
     margin-left: 2rem;
     gap: 1rem;
   }
@@ -312,7 +313,6 @@
     }
     &__text h2 {
       width: 80%;
-      margin: auto;
       font-size: 2.5rem;
     }
     &__text p {
@@ -324,6 +324,7 @@
       justify-content: space-between;
       align-items: center;
       width: 100%;
+      margin: auto;
     }
   }
 

@@ -202,8 +202,6 @@ const contactOptions = {
 };
 
 const contactObserver = new IntersectionObserver(revealSection, contactOptions);
-contactObserver.observe(contact);
-contact.classList.add("section-hidden");
 
 const revealAdress = function (entries, observer) {
   const [entry] = entries;
@@ -427,6 +425,8 @@ const notIfMobile = function () {
   categories.classList.add("section-hidden");
   productsObserver.observe(momentProducts);
   momentProducts.classList.add("section-hidden");
+  contactObserver.observe(contact);
+  contact.classList.add("section-hidden");
   adressObserver.observe(rightBlock);
   allAfter.forEach((div) => {
     div.classList.add("after");

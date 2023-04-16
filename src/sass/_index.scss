@@ -378,6 +378,9 @@
     background: url("../../src/images/sticky/ext_pharma.jpeg") no-repeat fixed;
     background-size: cover;
   }
+  @media screen and (max-width: 650px) {
+    display: none;
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -646,6 +649,7 @@
     text-align: center;
     margin: auto;
     margin-top: 2rem;
+    color: $color-primary;
   }
 
   .product-grey-addition {
@@ -655,7 +659,7 @@
 
   .testimonial__text {
     width: 70%;
-    color: #666;
+    color: $text-primary;
     margin: auto;
     text-align: center;
     margin-top: 1rem;

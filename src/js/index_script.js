@@ -1,7 +1,6 @@
 ("use strict");
 
-const main = document.querySelector(".main");
-const navBar = document.querySelector(".navbar");
+const navContact = document.querySelector(".navlinks__right--contact");
 const categories = document.querySelector(".categories");
 const items = document.querySelectorAll(".item");
 const momentProducts = document.querySelector(".moment-products");
@@ -22,11 +21,26 @@ const allHorairesBtn = document.querySelectorAll(".horaires-btn");
 const btnContainer = document.querySelector(".horaires-btn-container");
 const horairesContent = document.querySelectorAll(".horaires-content");
 
-const viewportWidthCondition = window.innerWidth < 750;
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// navBar
+
+//Sticky nav
+const obsOptions = {
+  root: null,
+  threshold: 0.22,
+};
+
+const navObserver = new IntersectionObserver(obsCallback, obsOptions);
+
+// Scroll to contact
+navContact.addEventListener("click", () => {
+  contact.scrollIntoView({ behavior: "smooth" });
+});
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
 // Reveal categories
 
 const changeBackground = function (entries, observer) {
@@ -340,7 +354,6 @@ btnContainer.addEventListener("click", function (e) {
 const notIfMobile = function () {
   // Guard to prevent the various JS functions from kicking off if the screen is too small
   if (viewportWidthCondition) return;
-  startNavHover();
   navObserver.observe(main);
   backgroundObserver.observe(categories);
   categoriesObserver.observe(categories);

@@ -1,9 +1,11 @@
 "use strict";
 
+const main = document.querySelector(".main");
 const nav = document.querySelector(".navlinks");
-const navContact = document.querySelector(".navlinks__right--contact");
+const navBar = document.querySelector(".navbar");
 
-console.log("script triggered");
+const viewportWidthCondition = window.innerWidth < 750;
+
 // Navbar
 
 // Function to handle the change of opacity when we hover on the links of the navbar
@@ -25,7 +27,9 @@ const startNavHover = function () {
   navBar.addEventListener("mouseout", handlerover.bind(0.5));
 };
 
-// Sticky nav
+if (!viewportWidthCondition) startNavHover();
+
+// Sticky nav (called on each indiividual page script because we want it to appear at different points in the scrolling)
 const obsCallback = function (entries) {
   const [entry] = entries;
   if (entry.isIntersecting) {
@@ -34,13 +38,6 @@ const obsCallback = function (entries) {
     navBar.classList.remove("nav-sticky");
   }
 };
-
-const obsOptions = {
-  root: null,
-  threshold: 0.22,
-};
-
-const navObserver = new IntersectionObserver(obsCallback, obsOptions);
 
 // Apparition navbar responsive
 const navSlide = function () {
@@ -65,18 +62,12 @@ const navSlide = function () {
   };
   burger.addEventListener("click", burgerPress);
 };
+navSlide();
 
 // Supprimer une classe pour ne pas avoir d'animation quand on a déjà cliqué sur le burger et qu'on change la dimension de la page.
 const removeVisibility = function () {
-  const viewPortWidth = window.innerWidth;
-  if (viewPortWidth > 750) {
+  if (!viewportWidthCondition) {
     nav.classList.remove("nav-visible");
   }
 };
 window.addEventListener("resize", removeVisibility);
-
-// Scroll to contact
-navContact.addEventListener("click", () => {
-  contact.scrollIntoView({ behavior: "smooth" });
-});
-navSlide();

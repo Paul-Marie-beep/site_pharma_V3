@@ -6,6 +6,16 @@ const cardPics = document.querySelectorAll(".cardpic");
 const contact = document.querySelector(".contact");
 const scrollToContact = document.querySelectorAll(".scroll-to-contact");
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Sticky nav
+const obsOptions = {
+  root: null,
+  threshold: 0.99,
+};
+
+const navObserver = new IntersectionObserver(obsCallback, obsOptions);
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Faire apparaître la grid
 
@@ -58,17 +68,8 @@ cardPicsObserver.observe(cardsNat);
 
 const notIfMobile = function () {
   // On ne le fait pas sur tel
-  if (
-    navigator.userAgent.match(/Android/i) ||
-    navigator.userAgent.match(/webOS/i) ||
-    navigator.userAgent.match(/iPhone/i) ||
-    navigator.userAgent.match(/iPad/i) ||
-    navigator.userAgent.match(/iPod/i) ||
-    navigator.userAgent.match(/BlackBerry/i) ||
-    navigator.userAgent.match(/Windows Phone/i)
-  )
-    return;
-
+  if (viewportWidthCondition) return;
+  navObserver.observe(main);
   cardsNat.classList.add("section-hidden");
   cardPics.forEach((div) => {
     div.classList.add("icone-lazy");

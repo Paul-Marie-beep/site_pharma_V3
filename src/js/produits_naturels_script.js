@@ -1,6 +1,8 @@
 "use strict";
 
-const cardsNat = document.querySelector(".produits-naturels-presentation");
+const jumbo = document.querySelector(".jumbotron");
+
+const cardsNat = document.querySelector(".produits-naturels-grid-container");
 const cardPics = document.querySelectorAll(".cardpic");
 
 const contact = document.querySelector(".contact");
@@ -11,7 +13,8 @@ const scrollToContact = document.querySelectorAll(".scroll-to-contact");
 //Sticky nav
 const obsOptions = {
   root: null,
-  threshold: 0.99,
+  threshold: 1,
+  // rootMargin: "-200px",
 };
 
 const navObserver = new IntersectionObserver(obsCallback, obsOptions);
@@ -26,6 +29,7 @@ const revealSection = function (entries, observer) {
 
   entry.target.classList.add("trans");
   entry.target.classList.remove("section-hidden");
+
   observer.unobserve(entry.target);
 };
 

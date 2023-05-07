@@ -67,6 +67,20 @@
   }
 }
 
+@media screen and (max-height: 500px) {
+  .jumbo-text {
+    position: absolute;
+    bottom: 2rem;
+  }
+  .jumbo-text h1 {
+    font-size: 2rem;
+  }
+
+  .jumbo-text p {
+    font-size: 1rem;
+  }
+}
+
 /* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Cards laboratoires */
 
 .grid-nat-hidden {

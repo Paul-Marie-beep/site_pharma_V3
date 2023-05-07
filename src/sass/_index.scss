@@ -60,6 +60,9 @@
     @media screen and (max-height: 450px) {
       padding-top: 1rem;
     }
+    @media screen and (max-height: 400px) {
+      padding-top: 0rem;
+    }
   }
   &__sous {
     margin: auto;

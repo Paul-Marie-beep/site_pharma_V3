@@ -1,20 +1,12 @@
 "use strict";
 
 const cardsNat = document.querySelector(".produits-naturels-presentation");
-console.log("cardsNat :", cardsNat);
 const cardPics = document.querySelectorAll(".cardpic");
 
 const contact = document.querySelector(".contact");
 const scrollToContact = document.querySelectorAll(".scroll-to-contact");
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Sticky nav
-const obsOptions = {
-  root: null,
-  threshold: 0.75,
-};
-
-const navObserver = new IntersectionObserver(obsCallback, obsOptions);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -70,7 +62,6 @@ cardPicsObserver.observe(cardsNat);
 const notIfMobile = function () {
   // On ne le fait pas sur tel
   if (viewportWidthCondition) return;
-  navObserver.observe(main);
   cardsNat.classList.add("section-hidden");
   cardPics.forEach((div) => {
     div.classList.add("icone-lazy");

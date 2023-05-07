@@ -1,6 +1,6 @@
 "use strict";
 
-const main = document.querySelector(".main");
+const jumbo = document.querySelector(".jumbo");
 const nav = document.querySelector(".navlinks");
 const navBar = document.querySelector(".navbar");
 
@@ -29,15 +29,27 @@ const startNavHover = function () {
 
 if (!viewportWidthCondition) startNavHover();
 
-// Sticky nav (called on each indiividual page script because we want it to appear at different points in the scrolling)
 const obsCallback = function (entries) {
   const [entry] = entries;
+
   if (entry.isIntersecting) {
-    navBar.classList.add("nav-sticky");
-  } else {
     navBar.classList.remove("nav-sticky");
+  } else {
+    if (entry.target.getBoundingClientRect().bottom < 0) {
+      navBar.classList.add("nav-sticky");
+    }
   }
 };
+
+const obsOptions = {
+  threshold: 0,
+};
+
+const navObserver = new IntersectionObserver(obsCallback, obsOptions);
+// The sticky nav is for bigger screens
+if (!viewportWidthCondition) {
+  navObserver.observe(jumbo);
+}
 
 // Apparition navbar responsive
 const navSlide = function () {

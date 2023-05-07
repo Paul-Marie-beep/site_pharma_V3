@@ -26,14 +26,6 @@ const horairesContent = document.querySelectorAll(".horaires-content");
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // navBar
 
-//Sticky nav
-const obsOptions = {
-  root: null,
-  threshold: 0.22,
-};
-
-const navObserver = new IntersectionObserver(obsCallback, obsOptions);
-
 // Scroll to contact
 navContact.addEventListener("click", () => {
   contact.scrollIntoView({ behavior: "smooth" });
@@ -354,7 +346,6 @@ btnContainer.addEventListener("click", function (e) {
 const notIfMobile = function () {
   // Guard to prevent the various JS functions from kicking off if the screen is too small
   if (viewportWidthCondition) return;
-  navObserver.observe(main);
   backgroundObserver.observe(categories);
   categoriesObserver.observe(categories);
   categories.classList.add("section-hidden");

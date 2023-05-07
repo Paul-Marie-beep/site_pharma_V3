@@ -1,7 +1,5 @@
 "use strict";
 
-const jumbo = document.querySelector(".jumbotron");
-
 const cardsNat = document.querySelector(".produits-naturels-grid-container");
 const cardPics = document.querySelectorAll(".cardpic");
 
@@ -9,15 +7,6 @@ const contact = document.querySelector(".contact");
 const scrollToContact = document.querySelectorAll(".scroll-to-contact");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-//Sticky nav
-const obsOptions = {
-  root: null,
-  threshold: 1,
-  // rootMargin: "-200px",
-};
-
-const navObserver = new IntersectionObserver(obsCallback, obsOptions);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Faire apparaître la grid
@@ -73,7 +62,6 @@ cardPicsObserver.observe(cardsNat);
 const notIfMobile = function () {
   // On ne le fait pas sur tel
   if (viewportWidthCondition) return;
-  navObserver.observe(main);
   cardsNat.classList.add("section-hidden");
   cardPics.forEach((div) => {
     div.classList.add("icone-lazy");

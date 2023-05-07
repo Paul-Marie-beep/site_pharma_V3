@@ -48,7 +48,7 @@
     @media screen and (max-width: 450px) {
       padding-top: 4rem;
     }
-    @media screen and (max-height: 580px) {
+    @media screen and (max-height: 700px) {
       padding-top: 3rem;
     }
     @media screen and (max-height: 500px) {
@@ -87,6 +87,11 @@
         margin-top: 1rem;
       }
       @media screen and (max-width: 450px) {
+        font-size: 1rem;
+        -webkit-text-stroke: 0px;
+        color: $color-secondary;
+      }
+      @media screen and (max-height: 700px) {
         font-size: 1rem;
         -webkit-text-stroke: 0px;
         color: $color-secondary;

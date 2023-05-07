@@ -29,6 +29,7 @@ const startNavHover = function () {
 
 if (!viewportWidthCondition) startNavHover();
 
+// Sticky nav function
 const obsCallback = function (entries) {
   const [entry] = entries;
 
@@ -46,6 +47,7 @@ const obsOptions = {
 };
 
 const navObserver = new IntersectionObserver(obsCallback, obsOptions);
+
 // The sticky nav is for bigger screens
 if (!viewportWidthCondition) {
   navObserver.observe(jumbo);

@@ -54,6 +54,9 @@
     @media screen and (max-height: 500px) {
       font-size: 2rem;
     }
+    @media screen and (max-height: 430px) {
+      padding-top: 2rem;
+    }
   }
   &__sous {
     margin: auto;

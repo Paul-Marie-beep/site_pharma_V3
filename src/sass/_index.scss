@@ -61,7 +61,7 @@
       padding-top: 1rem;
     }
     @media screen and (max-height: 400px) {
-      padding-top: 0rem;
+      padding-top: 0 rem;
     }
   }
   &__sous {
@@ -387,7 +387,7 @@
     background: url("../../src/images/sticky/ext_pharma.jpeg") no-repeat fixed;
     background-size: cover;
   }
-  @media screen and (max-width: 650px) {
+  @media screen and (max-width: 750px) {
     display: none;
   }
 }

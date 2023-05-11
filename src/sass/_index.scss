@@ -45,24 +45,25 @@
     }
     @media screen and (max-width: 564px) {
       // padding-top: 2.5rem;
-      font-size: 2.25rem;
+      // font-size: 2.25rem;
+      width: 85%;
     }
-    @media screen and (max-width: 508px) {
+    @media screen and (max-width: 530px) {
       // padding-top: 2.5rem;
-      font-size: 2rem;
+      font-size: 2.25rem;
     }
     @media screen and (max-width: 451px) {
       padding-top: 4rem;
       font-size: 1.85rem;
     }
-    @media screen and (max-width: 418px) {
-      padding-top: 2rem;
-      font-size: 1.75rem;
-    }
-    @media screen and (max-width: 395px) {
-      padding-top: 2.5rem;
-      font-size: 1.65rem;
-    }
+    // @media screen and (max-width: 418px) {
+    //   padding-top: 2rem;
+    //   font-size: 1.75rem;
+    // }
+    // @media screen and (max-width: 395px) {
+    //   padding-top: 2.5rem;
+    //   font-size: 1.65rem;
+    // }
     @media screen and (max-height: 700px) {
       padding-top: 3rem;
     }

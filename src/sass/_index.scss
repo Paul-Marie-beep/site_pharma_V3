@@ -21,13 +21,13 @@
       font-size: 4rem;
     }
     @media screen and (max-width: 905px) {
+      font-size: 3.75rem;
+    }
+    @media screen and (max-width: 846px) {
       font-size: 3.5rem;
     }
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 790px) {
       font-size: 3rem;
-    }
-    @media screen and (max-width: 800px) {
-      padding-top: 6rem;
     }
     @media screen and (max-width: 680px) {
       font-size: 2.75rem;
@@ -42,8 +42,13 @@
     @media screen and (max-width: 625px) {
       font-size: 2.5rem;
     }
+    @media screen and (max-width: 564px) {
+      // padding-top: 2.5rem;
+      font-size: 2.25rem;
+    }
     @media screen and (max-width: 508px) {
-      padding-top: 2.5rem;
+      // padding-top: 2.5rem;
+      font-size: 2rem;
     }
     @media screen and (max-width: 450px) {
       padding-top: 4rem;
@@ -76,26 +81,39 @@
     @media screen and (min-width: 650px) {
       animation: subtitleFadeIn 1s 0.5s ease-in-out forwards;
     }
+    // Du coup, les h2 ne sont visibles dès le chargement du site
     @media screen and (max-width: 651px) {
       opacity: 1;
     }
 
-    @media screen and (max-width: 565px) {
-      width: 90%;
+    @media screen and (max-width: 790px) {
+      width: 65%;
+    }
+    @media screen and (max-width: 564px) {
+      width: 70%;
+    }
+    @media screen and (max-width: 508px) {
+      width: 80%;
     }
     & h2 {
       color: $background-color;
       font-size: 1.5rem;
       font-family: "Roboto", sans-serif;
       -webkit-text-stroke: 1.3px $color-secondary;
-      @media screen and (max-width: 650px) {
-        font-size: 1.25rem;
+      @media screen and (max-width: 905px) {
+        margin-top: 0rem;
+      }
+      @media screen and (max-width: 846px) {
+        font-size: 1.35rem;
+      }
+      @media screen and (max-width: 790px) {
+        font-size: 1rem;
         margin-top: 1rem;
+        -webkit-text-stroke: 0px;
+        color: $color-secondary;
       }
       @media screen and (max-width: 450px) {
         font-size: 1rem;
-        -webkit-text-stroke: 0px;
-        color: $color-secondary;
       }
       @media screen and (max-height: 700px) {
         font-size: 1rem;

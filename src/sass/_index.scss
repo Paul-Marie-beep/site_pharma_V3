@@ -199,6 +199,13 @@
         height: auto;
         width: 100%;
       }
+      @media screen and (max-height: 460px) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: auto;
+        width: 100%;
+      }
     }
     &--2,
     &--3 {

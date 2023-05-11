@@ -14,6 +14,7 @@
     margin: auto;
     padding-top: 4rem;
     opacity: 0;
+    overflow-wrap: break-word;
     @media screen and (max-width: 1130px) {
       font-size: 4.5rem;
     }
@@ -50,8 +51,9 @@
       // padding-top: 2.5rem;
       font-size: 2rem;
     }
-    @media screen and (max-width: 450px) {
+    @media screen and (max-width: 451px) {
       padding-top: 4rem;
+      font-size: 1.85rem;
     }
     @media screen and (max-height: 700px) {
       padding-top: 3rem;
@@ -95,6 +97,9 @@
     @media screen and (max-width: 508px) {
       width: 80%;
     }
+    @media screen and (max-width: 451px) {
+      flex-direction: column;
+    }
     & h2 {
       color: $background-color;
       font-size: 1.5rem;
@@ -112,13 +117,14 @@
         -webkit-text-stroke: 0px;
         color: $color-secondary;
       }
-      @media screen and (max-width: 450px) {
-        font-size: 1rem;
-      }
+
       @media screen and (max-height: 700px) {
         font-size: 1rem;
         -webkit-text-stroke: 0px;
         color: $color-secondary;
+      }
+      @media screen and (max-width: 451px) {
+        font-weight: lighter;
       }
     }
   }

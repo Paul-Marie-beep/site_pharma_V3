@@ -53,6 +53,11 @@
       padding-top: 4rem;
       font-size: 1.85rem;
     }
+    @media screen and (max-width: 369px) {
+      padding-top: 4rem;
+      font-size: 1.65rem;
+    }
+
     @media screen and (max-height: 700px) {
       padding-top: 3rem;
     }
@@ -188,22 +193,7 @@
       @media screen and (max-width: 850px) {
         position: absolute;
         top: 0;
-        right: 0;
-        width: auto;
-      }
-
-      @media screen and (max-width: 650px) {
-        position: absolute;
-        top: 0;
         left: 0;
-        height: auto;
-        width: 100%;
-      }
-      @media screen and (max-height: 460px) {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: auto;
         width: 100%;
       }
     }
